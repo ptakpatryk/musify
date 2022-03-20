@@ -16,6 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (!user || !bcrypt.compareSync(password, user.password)) {
     res.status(401);
     res.json({ error: 'Wrong email or password.' });
+    return;
   }
 
   const token = jwt.sign(
