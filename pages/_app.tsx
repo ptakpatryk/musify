@@ -32,11 +32,16 @@ const theme = extendTheme({
 });
 
 const MyApp = ({ Component, pageProps }) => {
+  // Don't wrap within the Playerlayout if it's an authentication page
   return (
     <ChakraProvider theme={theme}>
-      <PlayerLayout>
+      {Component.authPage ? (
         <Component {...pageProps} />
-      </PlayerLayout>
+      ) : (
+        <PlayerLayout>
+          <Component {...pageProps} />
+        </PlayerLayout>
+      )}
     </ChakraProvider>
   );
 };
