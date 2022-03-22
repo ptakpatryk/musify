@@ -37,7 +37,7 @@ const Player = ({ songs, activeSong }) => {
   const changeActiveSong = useStoreActions(
     (state: any) => state.changeActiveSong
   );
-  const repeatRef = useRef(repeat);
+  const repeatRef = useRef(repeat) as any;
   const soundRef = useRef(null);
 
   useEffect(() => {
