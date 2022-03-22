@@ -1,5 +1,8 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { StoreProvider } from 'easy-peasy';
 import 'reset-css';
+
+import { store } from '../lib/store';
 
 import PlayerLayout from '../components/playerLayout';
 
@@ -35,13 +38,15 @@ const MyApp = ({ Component, pageProps }) => {
   // Don't wrap within the Playerlayout if it's an authentication page
   return (
     <ChakraProvider theme={theme}>
-      {Component.authPage ? (
-        <Component {...pageProps} />
-      ) : (
-        <PlayerLayout>
+      <StoreProvider store={store}>
+        {Component.authPage ? (
           <Component {...pageProps} />
-        </PlayerLayout>
-      )}
+        ) : (
+          <PlayerLayout>
+            <Component {...pageProps} />
+          </PlayerLayout>
+        )}
+      </StoreProvider>
     </ChakraProvider>
   );
 };

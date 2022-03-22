@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Flex } from '@chakra-ui/layout';
+import { Box } from '@chakra-ui/layout';
 import Sidebar from './sidebar';
+import PlayerBar from './playerBar';
 
 const PlayerLayout = ({ children }) => {
   return (
@@ -11,15 +12,8 @@ const PlayerLayout = ({ children }) => {
       <Box height="calc(100vh - 100px)" marginLeft="250px" marginBottom="100px">
         {children}
       </Box>
-      <Box
-        position="absolute"
-        left="0"
-        bottom="0"
-        height="100px"
-        background="gray.800"
-        width="100%"
-      >
-        Player
+      <Box position="absolute" left="0" bottom="0">
+        <PlayerBar />
       </Box>
     </Box>
   );

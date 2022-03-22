@@ -2,15 +2,18 @@ import { Box, Text, Flex } from '@chakra-ui/layout';
 import { Image } from '@chakra-ui/react';
 
 import GradientLayout from '../components/gradientLayout';
+import { useMe } from '../lib/hooks';
 import prisma from '../lib/prisma';
 
 const Home = ({ artists }) => {
+  const { user } = useMe();
+
   return (
     <GradientLayout
       color="purple"
       subtitle="profile"
-      title="Patryk Ptak"
-      description="10 public palylists"
+      title={`${user?.firstName} ${user?.lastName}`}
+      description={`${user?.playlistsCount} public playlists`}
       image="https://static.wikia.nocookie.net/battleklasky/images/e/eb/I_liek_trainz.png"
       roundImage
     >
@@ -35,7 +38,10 @@ const Home = ({ artists }) => {
               width="12%"
               key={artist.id}
             >
-              <Image src="https://picsum.photos/300/300" borderRadius="100%" />
+              <Image
+                src={`https://picsum.photos/300?random=${artist.id}`}
+                borderRadius="100%"
+              />
               <Box marginTop="20px">
                 <Text fontSize="large">{artist.name}</Text>
                 <Text fontSize="x-small">Artist</Text>
