@@ -19,7 +19,6 @@ import {
   MdOutlinePlayCircleFilled,
   MdOutlinePauseCircleFilled,
   MdOutlineRepeat,
-  MdRepeat,
 } from 'react-icons/md';
 import { useStoreActions } from 'easy-peasy';
 
