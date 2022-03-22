@@ -1,9 +1,4 @@
-interface Song {
-  name: string;
-  duration: number;
-  url: string;
-  artist?: string;
-}
+import { Song } from '../types';
 
 export const artistsData: {
   name: string;
